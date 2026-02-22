@@ -8,6 +8,7 @@ interface TaskCardProps {
   task: Task;
   onEdit: (task: Task) => void;
   onMove: (taskId: string, status: TaskStatus) => void;
+  onDelete: (taskId: string) => void;
 }
 
 const priorityVariant: Record<TaskPriority, "danger" | "warning" | "success"> =
@@ -21,6 +22,7 @@ export const TaskCard = memo(function TaskCard({
   task,
   onEdit,
   onMove,
+  onDelete,
 }: TaskCardProps) {
   const [{ isDragging }, dragRef] = useDrag<
     TaskDragItem,
@@ -73,6 +75,13 @@ export const TaskCard = memo(function TaskCard({
               onClick={() => onEdit(task)}
             >
               Edit
+            </Button>
+            <Button
+              variant="secondary"
+              className="text-xs"
+              onClick={() => onDelete(task.id)}
+            >
+              Delete
             </Button>
             <select
               value={task.status}

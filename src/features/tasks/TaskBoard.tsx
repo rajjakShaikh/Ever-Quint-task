@@ -10,6 +10,7 @@ interface TaskBoardProps {
   groupedTasks: Record<TaskStatus, Task[]>;
   onEditTask: (task: Task) => void;
   onMoveTask: (taskId: string, status: TaskStatus) => void;
+  onDeleteTask: (taskId: string) => void;
 }
 
 function DroppableColumn({
@@ -55,6 +56,7 @@ export const TaskBoard = memo(function TaskBoard({
   groupedTasks,
   onEditTask,
   onMoveTask,
+  onDeleteTask,
 }: TaskBoardProps) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -70,6 +72,7 @@ export const TaskBoard = memo(function TaskBoard({
               task={task}
               onEdit={onEditTask}
               onMove={onMoveTask}
+              onDelete={onDeleteTask}
             />
           ))}
         </DroppableColumn>

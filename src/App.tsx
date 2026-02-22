@@ -18,6 +18,7 @@ function App() {
   const [formOpen, setFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [toast, setToast] = useState<ToastState>(null);
+  const deleteTask = useTaskStore((s) => s.deleteTask);
 
   const showToast = useCallback((message: string, type: ToastType = "info") => {
     setToast({ message, type });
@@ -42,13 +43,23 @@ function App() {
       setEditingTask(null);
       setFormOpen(false);
     },
-    [editingTask, updateTask, addTask, showToast]
+    [editingTask, updateTask, addTask, showToast],
   );
 
   const handleEdit = useCallback((task: Task) => {
     setEditingTask(task);
     setFormOpen(true);
   }, []);
+
+  const handleDeleteTask = useCallback(
+    (taskId: string) => {
+      if (window.confirm("Delete this task?")) {
+        deleteTask(taskId);
+        showToast("Task deleted", "info");
+      }
+    },
+    [deleteTask, showToast],
+  );
 
   const handleCloseForm = useCallback(() => {
     setFormOpen(false);
@@ -60,7 +71,7 @@ function App() {
       moveTask(taskId, status);
       showToast("Task moved", "info");
     },
-    [moveTask, showToast]
+    [moveTask, showToast],
   );
 
   return (
@@ -132,6 +143,7 @@ function App() {
           groupedTasks={groupedTasks}
           onEditTask={handleEdit}
           onMoveTask={handleMoveTask}
+          onDeleteTask={handleDeleteTask}
         />
       </main>
 
