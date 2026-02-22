@@ -7,7 +7,7 @@ export const DUMMY_TASKS: Task[] = [
     description: "Initialize repo, ESLint, Tailwind, and folder structure.",
     status: "Done",
     priority: "High",
-    assignee: "Alice",
+    assignee: "Rajjak Shaikh",
     tags: ["setup", "devops"],
   }),
   createTask({
@@ -15,7 +15,7 @@ export const DUMMY_TASKS: Task[] = [
     description: "Three columns: Backlog, In Progress, Done.",
     status: "In Progress",
     priority: "High",
-    assignee: "Bob",
+    assignee: "Tarun Sharma",
     tags: ["frontend", "ui"],
   }),
   createTask({
@@ -23,7 +23,7 @@ export const DUMMY_TASKS: Task[] = [
     description: "Save and load tasks from localStorage.",
     status: "In Progress",
     priority: "Medium",
-    assignee: "Alice",
+    assignee: "Rajjak Shaikh",
     tags: ["storage"],
   }),
   createTask({
@@ -31,7 +31,7 @@ export const DUMMY_TASKS: Task[] = [
     description: "Required fields and error messages.",
     status: "Backlog",
     priority: "Medium",
-    assignee: "Charlie",
+    assignee: "pratik dhodge",
     tags: ["forms", "validation"],
   }),
   createTask({
@@ -39,7 +39,7 @@ export const DUMMY_TASKS: Task[] = [
     description: "By priority, search text, and date.",
     status: "Backlog",
     priority: "Low",
-    assignee: "Bob",
+    assignee: "Ashish Naik",
     tags: ["ux"],
   }),
 ];
