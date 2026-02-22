@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useDrop } from "react-dnd";
-import type { Task, TaskStatus } from "../../types/task";
+import type { Task, TaskPriority, TaskStatus } from "../../types/task";
 import { TASK_DRAG_TYPE, type TaskDragItem } from "./dnd";
 import { TaskCard } from "./TaskCard";
 
@@ -11,6 +11,7 @@ interface TaskBoardProps {
   onEditTask: (task: Task) => void;
   onMoveTask: (taskId: string, status: TaskStatus) => void;
   onDeleteTask: (taskId: string) => void;
+  onPriorityChange: (taskId: string, priority: TaskPriority) => void;
 }
 
 function DroppableColumn({
@@ -57,6 +58,7 @@ export const TaskBoard = memo(function TaskBoard({
   onEditTask,
   onMoveTask,
   onDeleteTask,
+  onPriorityChange,
 }: TaskBoardProps) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -73,6 +75,7 @@ export const TaskBoard = memo(function TaskBoard({
               onEdit={onEditTask}
               onMove={onMoveTask}
               onDelete={onDeleteTask}
+              onPriorityChange={onPriorityChange}
             />
           ))}
         </DroppableColumn>

@@ -74,6 +74,14 @@ function App() {
     [moveTask, showToast],
   );
 
+  const handlePriorityChange = useCallback(
+    (taskId: string, priority: Task["priority"]) => {
+      updateTask(taskId, { priority });
+      showToast("Priority updated", "info");
+    },
+    [updateTask, showToast],
+  );
+
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-slate-900">
       <header className="border-b border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
@@ -144,6 +152,7 @@ function App() {
           onEditTask={handleEdit}
           onMoveTask={handleMoveTask}
           onDeleteTask={handleDeleteTask}
+          onPriorityChange={handlePriorityChange}
         />
       </main>
 
